@@ -49,3 +49,7 @@ button {
   color: white;
   cursor: pointer;
 }
+.errorMsg {
+  font-size: small;
+  color: red;
+}

@@ -6,19 +6,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  //sample user login info
-  const database = [
-    { email: "test@gmail.com", password: "pass1" },
-    { email: "admin@gmail.com", password: "pass123" },
-  ];
-
-  const error = {
-    email: "invalid email id",
-    pass: "invalid password",
-  };
+  const [error, setError] = useState(false);
 
   function changeHandler(event) {
     setFormData((prevFormData) => ({
@@ -30,13 +18,11 @@ const Login = () => {
   function submitHandler(event) {
     event.preventDefault();
     console.log(formData);
-    console.log(document.forms[0]);
-  }
 
-  const renderErrorMessage = (value) =>
-    value === errorMessages.value && (
-      <div className="error">{errorMessages.message}</div>
-    );
+    if (formData.email.length === 0 || formData.password.length === 0) {
+      setError(true);
+    }
+  }
 
   return (
     <div className="container">
@@ -47,29 +33,35 @@ const Login = () => {
             Email <sup>*</sup>
           </p>
           <input
-            required
             type="email"
             value={formData.email}
             name="email"
             placeholder="Enter email address"
             onChange={changeHandler}
           />
-          {renderErrorMessage("email")}
         </label>
-        <label>
+        {error && formData.email.length <= 0 ? (
+          <p className="errorMsg">Please enter email address</p>
+        ) : (
+          ""
+        )}
+        <label htmlFor="password">
           <p className="label">
             Password <sup>*</sup>
           </p>
           <input
-            required
             type="password"
             value={formData.password}
             name="password"
             placeholder="Enter password"
             onChange={changeHandler}
           />
-          {renderErrorMessage("pass")}
         </label>
+        {error && formData.password.length <= 0 ? (
+          <p className="errorMsg">Please enter password</p>
+        ) : (
+          ""
+        )}
         <p className="forgot_password">Forgot password?</p>
         <br />
         <button>LOGIN </button>
