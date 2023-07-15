@@ -20,36 +20,39 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={submitHandler}>
-      <label htmlFor="email">
-        <p className="label c">
-          Email <sup>*</sup>
-        </p>
-        <input
-          required
-          type="email"
-          value={formData.email}
-          name="email"
-          placeholder="Enter email address"
-          onChange={changeHandler}
-        />
-      </label>
-      <label>
-        <p className="label">
-          Password <sup>*</sup>
-        </p>
-        <input
-          required
-          type="password"
-          value={formData.password}
-          name="password"
-          placeholder="Enter password"
-          onChange={changeHandler}
-        />
-      </label>
-      <br />
-      <button>Sign in</button>
-    </form>
+    <div className="container">
+      <h1 className="heading">Login</h1>
+      <form onSubmit={submitHandler}>
+        <label htmlFor="email">
+          <p className="label c">
+            Email <sup>*</sup>
+          </p>
+          <input
+            required
+            type="email"
+            value={formData.email}
+            name="email"
+            placeholder="Enter email address"
+            onChange={changeHandler}
+          />
+        </label>
+        <label>
+          <p className="label">
+            Password <sup>*</sup>
+          </p>
+          <input
+            required
+            type="password"
+            value={formData.password}
+            name="password"
+            placeholder="Enter password"
+            onChange={changeHandler}
+          />
+        </label>
+        <br />
+        <button>LOGIN </button>
+      </form>
+    </div>
   );
 };
 
