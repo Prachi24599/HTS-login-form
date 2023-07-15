@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Profile from "./Profile";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ formData, setFormData }) => {
   const navigate = useNavigate();
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
   const [error, setError] = useState(false);
   const [validEmailMsg, setValidEMailMsg] = useState("");
   let submitform = true;
