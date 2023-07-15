@@ -7,6 +7,7 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState(false);
+  const [validEmailMsg, setValidEMailMsg] = useState("");
 
   function changeHandler(event) {
     setFormData((prevFormData) => ({
@@ -17,11 +18,21 @@ const Login = () => {
 
   function submitHandler(event) {
     event.preventDefault();
-    console.log(formData);
 
+    //checking if the field is empty
     if (formData.email.length === 0 || formData.password.length === 0) {
       setError(true);
     }
+
+    //email validation
+    const regEx =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!regEx.test(formData.email) && formData.email.length > 0) {
+      setValidEMailMsg("please enter valid email address");
+    }
+
+    //print form data on console
   }
 
   return (
@@ -33,7 +44,7 @@ const Login = () => {
             Email <sup>*</sup>
           </p>
           <input
-            type="email"
+            type="text"
             value={formData.email}
             name="email"
             placeholder="Enter email address"
@@ -45,6 +56,8 @@ const Login = () => {
         ) : (
           ""
         )}
+        <p className="errorMsg">{validEmailMsg}</p>
+
         <label htmlFor="password">
           <p className="label">
             Password <sup>*</sup>
