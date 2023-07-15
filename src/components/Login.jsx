@@ -6,6 +6,19 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  //sample user login info
+  const database = [
+    { email: "test@gmail.com", password: "pass1" },
+    { email: "admin@gmail.com", password: "pass123" },
+  ];
+
+  const error = {
+    email: "invalid email id",
+    pass: "invalid password",
+  };
 
   function changeHandler(event) {
     setFormData((prevFormData) => ({
@@ -17,14 +30,20 @@ const Login = () => {
   function submitHandler(event) {
     event.preventDefault();
     console.log(formData);
+    console.log(document.forms[0]);
   }
+
+  const renderErrorMessage = (value) =>
+    value === errorMessages.value && (
+      <div className="error">{errorMessages.message}</div>
+    );
 
   return (
     <div className="container">
       <h1 className="heading">Login</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="email">
-          <p className="label c">
+          <p className="label">
             Email <sup>*</sup>
           </p>
           <input
@@ -35,6 +54,7 @@ const Login = () => {
             placeholder="Enter email address"
             onChange={changeHandler}
           />
+          {renderErrorMessage("email")}
         </label>
         <label>
           <p className="label">
@@ -48,6 +68,7 @@ const Login = () => {
             placeholder="Enter password"
             onChange={changeHandler}
           />
+          {renderErrorMessage("pass")}
         </label>
         <p className="forgot_password">Forgot password?</p>
         <br />
