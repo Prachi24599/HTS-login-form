@@ -49,6 +49,7 @@ const Login = () => {
             onChange={changeHandler}
           />
         </label>
+        <p className="forgot_password">Forgot password?</p>
         <br />
         <button>LOGIN </button>
       </form>

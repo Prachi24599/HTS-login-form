@@ -1,6 +1,6 @@
 .container {
   background-color: white;
-  height: 50%;
+  height: 70%;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -18,13 +18,25 @@ form {
   color: #010101;
   font-size: 0.875rem;
   margin-bottom: 0.25rem;
-  line-height: 1.375rem;
+  line-height: 1.5rem;
+}
+sup {
+  color: red;
 }
 input {
-  background-color: black;
+  width: 100%;
   opacity: 0.5;
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #010101;
+  outline: none;
+}
+.forgot_password {
+  font-size: smaller;
+  font-style: italic;
+  text-align: right;
+  cursor: pointer;
+  color: gray;
 }
 button {
   width: 100%;
@@ -32,7 +44,7 @@ button {
   border: none;
   border-radius: 25px;
   padding: 17px 20px;
-  margin-top: 1.5rem;
+  margin-bottom: 3rem;
   font-weight: bold;
   color: white;
   cursor: pointer;
